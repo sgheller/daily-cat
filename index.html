@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,21 @@
       $('#blep').attr("src",blep);
       return false;
     })
+    $.getJSON('https://www.reddit.com/r/cursedcats/top.json?sort=top&t=day?limit=1', function(data) {
+      var curse = data.data.children[0].data.url_overridden_by_dest;
+      console.log(curse);  
+      $('#curse').attr("src",curse);
+      return false;
+    })
+    $.getJSON('https://www.reddit.com/r/catloaf/top.json?sort=top&t=day?limit=1', function(data) {
+      var loaf = data.data.children[0].data.url_overridden_by_dest;
+      if (loaf.includes("gallery")){
+      	var loaf = data.data.children[1].data.url_overridden_by_dest;
+      }
+      console.log(loaf);  
+      $('#loaf').attr("src",loaf);
+      return false;
+    })
   });
   </script>
   <style>
@@ -43,7 +59,7 @@
     }
     img {
       max-width: 100%;
-      max-height: 800px;
+      max-height: 400px;
       width: auto;
       height: auto;
       border-radius: 20px;
@@ -62,6 +78,18 @@
         <div>
             <h1 class="title">The Daily Blep.</h1>
             <img id="blep" src="" alt="Blep.">
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <h1 class="title">The Daily Curse.</h1>
+            <img id="curse" src="" alt="Cursed.">
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <h1 class="title">The Daily Loaf.</h1>
+            <img id="loaf" src="" alt="Loaf.">
         </div>
     </div>
 </body>
