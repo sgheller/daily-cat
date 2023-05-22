@@ -46,23 +46,31 @@
      background-color: silver;
      height: 100%;
      margin: 0;
+     text-align: center;
     }
     .container {
       display: inline-block;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
+      padding: 10px 20px;
 
      }
     .title {
       font-size: 24px;
+      font-style: italic;
+      font-weight: bold;
+      
+    }
+    .caption {
+      font-size: 15px;
     }
     img {
       max-width: 100%;
-      max-height: 400px;
+      max-height: 500px;
       width: auto;
       height: auto;
       border-radius: 20px;
+      padding-top: 2px
     }
 
   </style>
@@ -70,26 +78,30 @@
 <body>
     <div class="container">
         <div>
-            <h1 class="title">The Daily Cat.</h1>
+            <div class="title">The Daily Cat.</div>
             <img id="cat" src="" alt="Cat.">
+            <div class="caption">Cat.</div>
         </div>
     </div>
     <div class="container">
         <div>
-            <h1 class="title">The Daily Blep.</h1>
+            <div class="title">The Daily Blep.</div>
             <img id="blep" src="" alt="Blep.">
+            <div class="caption">Blep.</div>
         </div>
     </div>
     <div class="container">
         <div>
-            <h1 class="title">The Daily Curse.</h1>
+            <div class="title">The Daily Curse.</div>
             <img id="curse" src="" alt="Cursed.">
+            <div class="caption">Cursed.</div>
         </div>
     </div>
     <div class="container">
         <div>
-            <h1 class="title">The Daily Loaf.</h1>
+            <div class="title">The Daily Loaf.</div>
             <img id="loaf" src="" alt="Loaf.">
+            <div class="caption">Loaf.</div>
         </div>
     </div>
 </body>
