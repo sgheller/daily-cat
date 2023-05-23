@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,38 +6,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script type="text/javascript">
 
-  $(document).ready( function() {
-
-
-    $.getJSON('https://www.reddit.com/r/catsstandingup/top.json?sort=top&t=day?limit=1', function(data) {
-      var cat = data.data.children[0].data.url_overridden_by_dest;
-      console.log(cat);  
-      $('#cat').attr("src",cat);
-      return false;
-    })
-
-    $.getJSON('https://www.reddit.com/r/blep/top.json?sort=top&t=day?limit=1', function(data) {
-      var blep = data.data.children[0].data.url_overridden_by_dest;
-      console.log(blep);  
-      $('#blep').attr("src",blep);
-      return false;
-    })
-    $.getJSON('https://www.reddit.com/r/cursedcats/top.json?sort=top&t=day?limit=1', function(data) {
-      var curse = data.data.children[0].data.url_overridden_by_dest;
-      console.log(curse);  
-      $('#curse').attr("src",curse);
-      return false;
-    })
-    $.getJSON('https://www.reddit.com/r/catloaf/top.json?sort=top&t=day?limit=1', function(data) {
-      var loaf = data.data.children[0].data.url_overridden_by_dest;
-      if (loaf.includes("gallery")){
-      	var loaf = data.data.children[1].data.url_overridden_by_dest;
+  $(document).ready(function() {
+  function fetchAndDisplayImage(url, elementId) {
+    $.getJSON(url, function(data) {
+    	var childrenIndex = 0;
+      var imageUrl = data.data.children[childrenIndex].data.url_overridden_by_dest;
+      while (imageUrl.includes("gallery")) {
+ 	      console.log(elementId, imageUrl);
+        childrenIndex++;
+        imageUrl = data.data.children[childrenIndex].data.url_overridden_by_dest;
       }
-      console.log(loaf);  
-      $('#loaf').attr("src",loaf);
+      console.log(elementId, imageUrl);
+      $('#' + elementId).attr("src", imageUrl);
       return false;
-    })
-  });
+    });
+  }
+
+  fetchAndDisplayImage('https://www.reddit.com/r/catsstandingup/top.json?sort=top&t=day?limit=1', 'cat');
+  fetchAndDisplayImage('https://www.reddit.com/r/blep/top.json?sort=top&t=day?limit=1', 'blep');
+  fetchAndDisplayImage('https://www.reddit.com/r/cursedcats/top.json?sort=top&t=day?limit=1', 'curse');
+  fetchAndDisplayImage('https://www.reddit.com/r/catloaf/top.json?sort=top&t=day?limit=1', 'loaf');
+});
   </script>
   <style>
     body, html{
